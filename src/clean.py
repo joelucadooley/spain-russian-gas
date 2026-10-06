@@ -9,6 +9,15 @@ for col in df.columns:
 		keep.append(col)
 
 df = df[keep]
+df = df.rename(columns={df.columns[0]: "year", df.columns[1]: "month"})
+df = df.dropna(subset=["year", "month"])
+df = df[df["month"].str.strip().str.lower() !="total"]
 
-print(df.head())
-print(df.columns.tolist())
+months = {
+        "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6, "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
+}
+
+df["month"] = df["month"].str.strip().str.lower().map(months)
+
+print(df[["year", "month"]].tail(5))
+print(df["month"].unique())
