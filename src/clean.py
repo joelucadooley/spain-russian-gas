@@ -18,6 +18,12 @@ months = {
 }
 
 df["month"] = df["month"].str.strip().str.lower().map(months)
+df["year"] = df["year"].astype(int)
+df["date"] = pd.to_datetime(df[["year", "month"]].assign(day=1))
+df = df.drop(columns=["year", "month"])
 
-print(df[["year", "month"]].tail(5))
-print(df["month"].unique())
+long = df.melt(id_vars="date", var_name="source", value_name="gwh")
+long["gwh"] = pd.to_numeric(long["gwh"], errors="coerce").fillna(0)
+
+print(long[long["source"] == "Rusia"].tail(5))
+print(len(long))
