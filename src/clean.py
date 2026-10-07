@@ -1,4 +1,5 @@
 import pandas as pd
+import sqlite3
 
 df = pd.read_excel("data/raw/importaciones-gas.xlsx", sheet_name="Todos", header=5)
 
@@ -37,5 +38,11 @@ long["type"] = long["source"].apply(get_type)
 long = long[long["type"] != "subtotal"]
 long["country"] = long["source"].str.strip().str.removesuffix("GNL").str.removesuffix("GN")
 long = long[~long["country"].str.contains("Europa")]
+long = long[["date", "country", "type", "gwh"]]
+long["date"] = long["date"].dt.strftime("%Y-%m-%d")
 
-print(long[long["date"].dt.year == 2023]["gwh"].sum())
+conn = sqlite3.connect("data/gas.db")
+long.to_sql("imports", conn, if_exists="replace", index=False)
+conn.close()
+
+print("Saved", len(long), "rows")
