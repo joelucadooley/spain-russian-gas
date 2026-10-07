@@ -25,5 +25,17 @@ df = df.drop(columns=["year", "month"])
 long = df.melt(id_vars="date", var_name="source", value_name="gwh")
 long["gwh"] = pd.to_numeric(long["gwh"], errors="coerce").fillna(0)
 
-print(long[long["source"] == "Rusia"].tail(5))
-print(len(long))
+def get_type(source):
+	source = source.strip()
+	if source.endswith("GNL"):
+		return "LNG"
+	if source.endswith("GN"):
+		return "pipeline"
+	return "subtotal"
+
+long["type"] = long["source"].apply(get_type)
+long = long[long["type"] != "subtotal"]
+long["country"] = long["source"].str.strip().str.removesuffix("GNL").str.removesuffix("GN")
+long = long[~long["country"].str.contains("Europa")]
+
+print(long[long["date"].dt.year == 2023]["gwh"].sum())
