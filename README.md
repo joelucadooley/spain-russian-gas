@@ -12,6 +12,6 @@ The bans are as follows:
 - 1 January 2027 - All Russian LNG
 - Autumn 2027 - All Russian pipeline gas
 
-Russia has no pipeline to Spain, so all of Spain's Russian gas arrives by ship as LNG. This makes the 1 January 2027 ban the key date for Spain.
+Russia has no direct pipeline to Spain, so virtually all of Spain's Russian gas (over 99.9% since 2004) arrives by ship as LNG. This makes the 1 January 2027 ban the key date for Spain.
 
 ![Russia's share of Spain's gas imports](charts/russia_share.png)
