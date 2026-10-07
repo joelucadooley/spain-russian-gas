@@ -26,6 +26,28 @@ I checked the cleaned data against three published figures:
 - Russian LNG for July 2026 is 2,087.5 GWh, against 2,088 GWh reported by the grid operator Enagás.
 - Russia's share in May 2026 is 27.9%, against 27.8% reported by Enagás.
 
+## How to run it
+
+```bash
+git clone https://github.com/joelucadooley/spain-russian-gas.git
+cd spain-russian-gas
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+wget -P data/raw https://www.cores.es/sites/default/files/archivos/estadisticas/importaciones-gas.xlsx
+python src/clean.py
+python src/analysis.py
+```
+
+`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the chart.
+
+## Limitations
+
+- Monthly figures jump around because LNG arrives by the shipload. The 12-month average is a better guide to the trend.
+- The data ends in July 2026, so it is too early to say whether the fall after May will last.
+- The chart shows timing, not cause. Prices, contracts and events elsewhere also affect how much gas Spain buys from each country.
+- Imports are not the same as consumption. Spain re-exports part of the gas it imports (about 75,000 GWh in 2023, according to CORES).
+
 ## Sources
 
 - CORES gas import statistics: https://www.cores.es/es/estadisticas
