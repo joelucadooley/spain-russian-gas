@@ -36,7 +36,7 @@ def get_type(source):
 
 long["type"] = long["source"].apply(get_type)
 long = long[long["type"] != "subtotal"]
-long["country"] = long["source"].str.strip().str.removesuffix("GNL").str.removesuffix("GN")
+long["country"] = long["source"].str.strip().str.removesuffix("GNL").str.removesuffix("GN").str.strip()
 long = long[~long["country"].str.contains("Europa")]
 long = long[["date", "country", "type", "gwh"]]
 long["date"] = long["date"].dt.strftime("%Y-%m-%d")
