@@ -15,3 +15,21 @@ The bans are as follows:
 Russia has no direct pipeline to Spain, so virtually all of Spain's Russian gas (over 99.9% since 2004) arrives by ship as LNG. This makes the 1 January 2027 ban the key date for Spain.
 
 ![Russia's share of Spain's gas imports](charts/russia_share.png)
+
+## Data
+
+The data comes from CORES, the Spanish public body that manages strategic fuel reserves. It publishes monthly natural gas imports by country of origin, from 2004 onwards, measured in GWh.
+
+I checked the cleaned data against three published figures:
+
+- Total imports for 2023 come to 396,434 GWh, matching the annual balance published by CORES (277,078 GWh LNG plus 119,356 GWh pipeline).
+- Russian LNG for July 2026 is 2,087.5 GWh, against 2,088 GWh reported by the grid operator Enagás.
+- Russia's share in May 2026 is 27.9%, against 27.8% reported by Enagás.
+
+## Sources
+
+- CORES gas import statistics: https://www.cores.es/es/estadisticas
+- 2023 total imports (CORES annual gas balance): https://cores.es/sites/default/files/archivos/estadisticas/est-gas-balance-2023.pdf
+- July 2026 Russian LNG volume (Caspian Post, citing Enagás): https://caspianpost.com/energy/russian-lng-flows-to-spain-decline-but-remain-significant
+- May 2026 Russian share (EnterpriseAM, citing the Financial Times and Enagás): https://enterpriseam.com/logistics/2026/06/30/bilbaos-russian-lng-rebound-tests-europes-2027-ban/
+- EU regulation and ban dates (Council of the EU press release, 26 January 2026): https://www.eeas.europa.eu/delegations/ukraine/russian-gas-imports-council-gives-final-greenlight-stepwise-ban_en
