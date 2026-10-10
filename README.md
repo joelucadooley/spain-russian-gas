@@ -16,6 +16,16 @@ Russia has no direct pipeline to Spain, so virtually all of Spain's Russian gas 
 
 ![Russia's share of Spain's gas imports](charts/russia_share.png)
 
+## Who supplies Spain's gas?
+
+![Supplier mix](charts/supplier_mix.png)
+
+Algeria is Spain's largest supplier, sending about 128,500 GWh in 2025. The United States is second, and its volumes swing sharply from year to year: about 56,900 GWh in 2024 and 111,700 GWh in 2025.
+
+Apart from a small amount in 2004, Spain imported no gas from Russia until 2018. Its share then grew to a peak of 21.3% in 2024, when it was Spain's second-largest supplier, ahead of the US. It fell to 11.5% in 2025 and was back to 18.3% over the first seven months of 2026.
+
+Nigeria has moved the other way, from about 63,800 GWh in 2022 to 27,200 GWh in 2025.
+
 ## Data
 
 The data comes from CORES, the Spanish public body that manages strategic fuel reserves. It publishes monthly natural gas imports by country of origin, from 2004 onwards, measured in GWh.
@@ -37,15 +47,16 @@ pip install -r requirements.txt
 wget -P data/raw https://www.cores.es/sites/default/files/archivos/estadisticas/importaciones-gas.xlsx
 python src/clean.py
 python src/analysis.py
+python src/suppliers.py
 ```
 
-`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the chart.
+`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the first chart. `suppliers.py` calculates each supplier's share by year and draws the second.
 
 ## Limitations
 
 - Monthly figures jump around because LNG arrives by the shipload. The 12-month average is a better guide to the trend.
-- The data ends in July 2026, so it is too early to say whether the fall after May will last.
-- The chart shows timing, not cause. Prices, contracts and events elsewhere also affect how much gas Spain buys from each country.
+- The data ends in July 2026, so it is too early to say whether the fall after May will last, and the 2026 figures cover January to July only.
+- The charts show timing, not cause. Prices, contracts and events elsewhere also affect how much gas Spain buys from each country.
 - Imports are not the same as consumption. Spain re-exports part of the gas it imports (about 75,000 GWh in 2023, according to CORES).
 
 ## Sources
