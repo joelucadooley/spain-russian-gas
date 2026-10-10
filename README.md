@@ -42,6 +42,19 @@ Since then pipeline supply has been steady at around 120,000 to 134,000 GWh a ye
 
 The chart ends in 2025, because 2026 data only covers January to July.
 
+## Can Spain replace Russian gas?
+
+![Stress test](charts/stress_test.png)
+
+Over the 12 months to July 2026, Russia supplied 53,531 GWh of gas to Spain. From 1 January 2027, that has to come from somewhere else.
+
+The chart compares that figure with the five largest one-year increases by any single supplier since 2004. Three were larger: Algeria in 2021 (71,785 GWh), the United States in 2022 (68,195 GWh) and the United States again in 2025 (54,798 GWh).
+
+Replacing Russia's supply would be a large change, but not an unprecedented one. Two cautions apply:
+
+- Pipeline imports as a whole rose by about 52,800 GWh in 2021, so much of that year's increase came by pipeline. Pipeline supply has been flat since the Maghreb-Europe closure, so a replacement would most likely have to arrive as LNG, as the US increases did.
+- These figures show that the volumes have been found before. They say nothing about what the replacement gas would cost.
+
 ## Data
 
 The data comes from CORES, the Spanish public body that manages strategic fuel reserves. It publishes monthly natural gas imports by country of origin, from 2004 onwards, measured in GWh.
@@ -65,9 +78,10 @@ python src/clean.py
 python src/analysis.py
 python src/suppliers.py
 python src/lng_vs_pipeline.py
+python src/stress_test.py
 ```
 
-`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the first chart. `suppliers.py` calculates each supplier's share by year and draws the second. `lng_vs_pipeline.py` compares pipeline and LNG volumes by year and draws the third.
+`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the first chart. `suppliers.py` calculates each supplier's share by year and draws the second. `lng_vs_pipeline.py` compares pipeline and LNG volumes by year and draws the third. `stress_test.py` compares Russia's recent supply with the largest one-year increases by other suppliers and draws the fourth.
 
 ## Limitations
 
