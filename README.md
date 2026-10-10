@@ -26,6 +26,22 @@ Apart from a small amount in 2004, Spain imported no gas from Russia until 2018.
 
 Nigeria has moved the other way, from about 63,800 GWh in 2022 to 27,200 GWh in 2025.
 
+## Pipeline or ship?
+
+![Pipeline versus LNG](charts/lng_vs_pipeline.png)
+
+Spain's gas arrives either by pipeline or by ship as LNG, and the balance has shifted three times.
+
+From 2011, pipeline gas took over. The Medgaz pipeline from Algeria to Almería opened that year, and pipeline imports more than doubled, from about 100,000 GWh in 2010 to 212,000 GWh in 2015. Over the same period LNG fell by more than half, from a peak of 331,600 GWh in 2008 to 151,900 GWh in 2015.
+
+In 2019, LNG moved back ahead for the first time since 2012, with 240,900 GWh against 177,500 GWh by pipeline.
+
+On 31 October 2021, the Maghreb-Europe pipeline, which carried Algerian gas to Spain through Morocco, closed. Pipeline imports fell by a third, from 189,100 GWh in 2021 to 127,200 GWh in 2022, and LNG rose from 226,600 GWh to 319,100 GWh to fill the gap.
+
+Since then pipeline supply has been steady at around 120,000 to 134,000 GWh a year, while LNG has swung between 205,000 and 319,000 GWh. LNG is now the flexible part of Spain's supply.
+
+The chart ends in 2025, because 2026 data only covers January to July.
+
 ## Data
 
 The data comes from CORES, the Spanish public body that manages strategic fuel reserves. It publishes monthly natural gas imports by country of origin, from 2004 onwards, measured in GWh.
@@ -48,9 +64,10 @@ wget -P data/raw https://www.cores.es/sites/default/files/archivos/estadisticas/
 python src/clean.py
 python src/analysis.py
 python src/suppliers.py
+python src/lng_vs_pipeline.py
 ```
 
-`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the first chart. `suppliers.py` calculates each supplier's share by year and draws the second.
+`clean.py` reads the CORES spreadsheet, removes totals and subtotals, and saves a tidy table to a SQLite database. `analysis.py` calculates Russia's share of imports and draws the first chart. `suppliers.py` calculates each supplier's share by year and draws the second. `lng_vs_pipeline.py` compares pipeline and LNG volumes by year and draws the third.
 
 ## Limitations
 
@@ -66,3 +83,5 @@ python src/suppliers.py
 - July 2026 Russian LNG volume (Caspian Post, citing Enagás): https://caspianpost.com/energy/russian-lng-flows-to-spain-decline-but-remain-significant
 - May 2026 Russian share (EnterpriseAM, citing the Financial Times and Enagás): https://enterpriseam.com/logistics/2026/06/30/bilbaos-russian-lng-rebound-tests-europes-2027-ban/
 - EU regulation and ban dates (Council of the EU press release, 26 January 2026): https://www.eeas.europa.eu/delegations/ukraine/russian-gas-imports-council-gives-final-greenlight-stepwise-ban_en
+- Medgaz pipeline start of operations, April 2011 (BOE): https://www.boe.es/boe/dias/2021/07/14/pdfs/BOE-A-2021-11684.pdf
+- Maghreb-Europe pipeline closure (Atalayar): https://atalayar.com/en/content/algeria-blames-morocco-maghreb-gas-pipeline-closure
